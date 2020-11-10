@@ -1,4 +1,4 @@
-package com.example.notification
+package com.example.fcm_flutter_notification
 
 import io.flutter.app.FlutterApplication;
 import io.flutter.plugin.common.PluginRegistry;
@@ -13,7 +13,7 @@ class Application : FlutterApplication(), PluginRegistrantCallback {
     FlutterFirebaseMessagingService.setPluginRegistrant(this)
   }
 
-  override fun registerWith(registry: PluginRegistry) {
-    GeneratedPluginRegistrant.registerWith(registry)
-  }
+   override fun registerWith(registry: PluginRegistry?) {
+  io.flutter.plugins.firebasemessaging.FirebaseMessagingPlugin.registerWith(registry?.registrarFor("io.flutter.plugins.firebasemessaging.FirebaseMessagingPlugin"));
+    }
 }

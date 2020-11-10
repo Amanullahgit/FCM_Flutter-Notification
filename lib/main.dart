@@ -11,13 +11,13 @@ class MyApp extends StatefulWidget {
   }
 }
 
-Future<dynamic> myBackgroundHandler(Map<String, dynamic> message){
+Future<dynamic> myBackgroundHandler(Map<String, dynamic> message) {
   return MyAppState()._showNotification(message);
 }
 
-
 class MyAppState extends State<MyApp> {
-FlutterLocalNotificationsPlugin flutterLocalNotificationsPlugin = FlutterLocalNotificationsPlugin();
+  FlutterLocalNotificationsPlugin flutterLocalNotificationsPlugin =
+      FlutterLocalNotificationsPlugin();
 
   final FirebaseMessaging _firebaseMessaging = FirebaseMessaging();
   @override
@@ -32,45 +32,44 @@ FlutterLocalNotificationsPlugin flutterLocalNotificationsPlugin = FlutterLocalNo
     );
   }
 
-   Future _showNotification(Map<String, dynamic> message) async {
+  Future _showNotification(Map<String, dynamic> message) async {
     var androidPlatformChannelSpecifics = new AndroidNotificationDetails(
       'channel id',
       'channel name',
       'channel desc',
-      importance: Importance.Max,
-      priority: Priority.High,
+      importance: Importance.max,
+      priority: Priority.high,
     );
- 
-    var platformChannelSpecifics = new NotificationDetails(
-        androidPlatformChannelSpecifics, null);
+
+    var platformChannelSpecifics =
+        new NotificationDetails(android: androidPlatformChannelSpecifics);
     await flutterLocalNotificationsPlugin.show(
-        0,
+      0,
       'new message arived',
       'i want ${message['data']['title']} for ${message['data']['price']}',
       platformChannelSpecifics,
       payload: 'Default_Sound',
     );
   }
- 
 
   getTokenz() async {
     String token = await _firebaseMessaging.getToken();
     print(token);
   }
 
-  Future selectNotification(String payload)async{
+  Future selectNotification(String payload) async {
     await flutterLocalNotificationsPlugin.cancelAll();
   }
 
-
   @override
   void initState() {
-    var initializationSettingsAndroid = AndroidInitializationSettings('@mipmap/ic_launcher');
+    var initializationSettingsAndroid =
+        AndroidInitializationSettings('@mipmap/ic_launcher');
 
-var initializationSettings = InitializationSettings(
-    initializationSettingsAndroid, null);
- flutterLocalNotificationsPlugin.initialize(initializationSettings,
-    onSelectNotification: selectNotification);
+    var initializationSettings =
+        InitializationSettings(android: initializationSettingsAndroid);
+    flutterLocalNotificationsPlugin.initialize(initializationSettings,
+        onSelectNotification: selectNotification);
     super.initState();
 
     _firebaseMessaging.configure(
@@ -81,8 +80,9 @@ var initializationSettings = InitializationSettings(
             context: context,
             builder: (context) {
               return AlertDialog(
-                title: Text( 'new message arived'),
-                content: Text('i want ${message['data']['title']} for ${message['data']['price']}'),
+                title: Text('new message arived'),
+                content: Text(
+                    'i want ${message['data']['title']} for ${message['data']['price']}'),
                 actions: <Widget>[
                   FlatButton(
                     child: Text('Ok'),
