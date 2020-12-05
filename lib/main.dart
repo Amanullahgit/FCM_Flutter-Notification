@@ -82,7 +82,7 @@ class MyAppState extends State<MyApp> {
               return AlertDialog(
                 title: Text('new message arived'),
                 content: Text(
-                    'i want ${message['data']['title']} for ${message['data']['price']}'),
+                    'i want ${message['notification']['title']} for ${message['notification']['body']}'),
                 actions: <Widget>[
                   FlatButton(
                     child: Text('Ok'),

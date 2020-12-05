@@ -9,6 +9,7 @@
          <!-- inside activity
                      android:launchMode="singleTop"
             android:theme="@style/LaunchTheme" -->
+            <uses-permission android:name="android.permission.INTERNET" />
     <application
         android:name=".Application"
         android:label="notification"
