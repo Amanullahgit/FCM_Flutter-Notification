@@ -1,8 +1,9 @@
 # Flutter Notification & FCM
 
 The repo is about flutter notification and FCM (Firebase Cloud Messaging).<br>
-It covers flutter notification (foreground, background) and receiving notification automatically on document change in firebase database using javascript code.<br><br>
+It covers flutter notification (foreground, background) and receiving notification automatically on document change in firebase database using javascript code.<br>
 
+[Updated with flutter 2.0](https://github.com/Amanullahgit/Flutter-v2-FCM-Notifications)<br><br>
 ## Getting Started
 
 Just clone the repo and add your firebase 'google-services.json'.<br><br>
